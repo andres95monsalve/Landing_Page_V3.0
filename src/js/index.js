@@ -1,5 +1,6 @@
 import { THREE } from "./three.js/build/three.module.js";
 import { GLTFLoader } from "./three.js/examples/jsm/loaders/GLTFLoader.js";
+import express from "express";
 
 const canvas = document.querySelector("webgl"); // The WebGL canvas element
 const scene = new THREE.Scene();
@@ -57,10 +58,16 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 renderer.gammaOutput = true;
 
-// Render the scene
-function render() {
-  requestAnimationFrame(render);
-  renderer.render(scene, camera);
-}
+// Start the web server
+const app = express();
 
-render();
+app.get('/', (req, res) => {
+  // Render the Three.js scene here
+  renderer.render(scene, camera);
+  res.send('<h1>Three.js scene</h1>');
+});
+
+const server = http.createServer(app);
+server.listen(3000, () => {
+  console.log('Servidor iniciado en http://localhost:3000');
+});
