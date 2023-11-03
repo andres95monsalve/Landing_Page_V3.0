@@ -1,5 +1,5 @@
-import { THREE } from "./three.js/build/three.module";
-import { GLTFLoader } from "./three.js/examples/jsm/loaders/GLTFLoader";
+import { THREE } from "./three.js/build/three.module.js";
+import { GLTFLoader } from "./three.js/examples/jsm/loaders/GLTFLoader.js";
 
 const canvas = document.querySelector("webgl"); // The WebGL canvas element
 const scene = new THREE.Scene();
@@ -10,23 +10,23 @@ const modelGroup = new THREE.Group();
 const loader = new GLTFLoader();
 loader.load(
   "../assets/helicopter.glb",
-  function (glb) {
-    console.log(glb);
+  function (gltf) {
+    console.log(gltf);
 
-    // Get the center of the GLB model
-    const center = glb.scene.getCenter(new THREE.Vector3());
+    // Get the center of the GLTF model
+    const center = gltf.scene.getCenter(new THREE.Vector3());
 
-    // Position the GLB model at the center of the group
-    glb.scene.position.sub(center);
+    // Position the GLTF model at the center of the group
+    gltf.scene.position.sub(center);
 
-    // Add the GLB model to the group
-    modelGroup.add(glb.scene);
+    // Add the GLTF model to the group
+    modelGroup.add(gltf.scene);
 
     // Add the group to the scene
     scene.add(modelGroup);
   },
   function (xhr) {
-    console.log((xhr.loaded / xhr.total) * 100 + "loaded");
+    console.log((xhr.loaded / xhr.total) * 100 + " loaded");
   },
   function (error) {
     console.log("An error occurred");
@@ -46,13 +46,13 @@ const sizes = {
 const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
-  8.1,
+  0.1,
   100
 );
 camera.position.set(0, 1, 2);
 scene.add(camera);
 
-const renderer = new THREE.WebGL1Renderer({
+const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
 
