@@ -1,0 +1,11 @@
+Model Information:
+* title:	Helicopter NEW
+* source:	https://sketchfab.com/3d-models/helicopter-new-f4dbd7330ab1478d8d955b02b7866efe
+* author:	alexking.can (https://sketchfab.com/alexking.can)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Helicopter NEW" (https://sketchfab.com/3d-models/helicopter-new-f4dbd7330ab1478d8d955b02b7866efe) by alexking.can (https://sketchfab.com/alexking.can) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
