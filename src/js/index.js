@@ -8,9 +8,9 @@ const scene = new THREE.Scene();
 const modelGroup = new THREE.Group();
 
 const loader = new GLTFLoader();
-loader.load(
+loader.loadAsync(
   "../assets/helicopter.glb",
-  function (gltf) {
+  (gltf) => {
     console.log(gltf);
 
     // Get the center of the GLTF model
@@ -25,46 +25,42 @@ loader.load(
     // Add the group to the scene
     scene.add(modelGroup);
   },
-  function (xhr) {
-    console.log((xhr.loaded / xhr.total) * 100 + " loaded");
+  (xhr) => {
+    console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
   },
-  function (error) {
-    console.log("An error occurred");
+  (error) => {
+    console.log("An error occurred: ", error);
   }
 );
 
+// Add a light to the scene
 const light = new THREE.DirectionalLight("0xffffff", 1);
 light.position.set(2, 2, 5);
 scene.add(light);
 
-// Boiler Plate Code
-const sizes = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
-
+// Set up the camera
 const camera = new THREE.PerspectiveCamera(
   75,
-  sizes.width / sizes.height,
+  window.innerWidth / window.innerHeight,
   0.1,
   100
 );
 camera.position.set(0, 1, 2);
 scene.add(camera);
 
+// Set up the renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
-
-renderer.setSize(sizes.width, sizes.height);
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 renderer.gammaOutput = true;
 
-function animate() {
-  // Render the scene every frame
-  requestAnimationFrame(animate);
+// Render the scene
+function render() {
+  requestAnimationFrame(render);
   renderer.render(scene, camera);
 }
 
-animate();
+render();
