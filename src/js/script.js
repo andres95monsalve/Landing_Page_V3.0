@@ -1,18 +1,29 @@
-import { THREE } from "three.js-master/build/three.module.js";
-import { GLTFLoader } from "three.js-master/examples/jsm/loaders/GLTFLoader.js";
+import { THREE } from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 const canvas = document.querySelector("webgl"); // The WebGL canvas element
 const scene = new THREE.Scene();
+
+// Create a group to contain the GLB model
+const modelGroup = new THREE.Group();
 
 const loader = new GLTFLoader();
 loader.load(
   "../assets/helicopter.glb",
   function (glb) {
     console.log(glb);
-    const root = glb.scene; // The root node of the GLTF scene
-    root.scale.set(0.5, 0.5, 0.5);
 
-    scene.add(root);
+    // Get the center of the GLB model
+    const center = glb.scene.getCenter(new THREE.Vector3());
+
+    // Position the GLB model at the center of the group
+    glb.scene.position.sub(center);
+
+    // Add the GLB model to the group
+    modelGroup.add(glb.scene);
+
+    // Add the group to the scene
+    scene.add(modelGroup);
   },
   function (xhr) {
     console.log((xhr.loaded / xhr.total) * 100 + "loaded");
