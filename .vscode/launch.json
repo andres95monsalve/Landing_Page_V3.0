@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense para saber los atributos posibles.
+  // Mantenga el puntero para ver las descripciones de los existentes atributos.
+  // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "Attach to packager",
+      "request": "attach",
+      "type": "reactnative",
+      "cwd": "${workspaceFolder}",
+      "address": "http://localhost:3000",
+      "port": 3000
+    },
+    {
+      "name": "Debug Windows",
+      "request": "launch",
+      "type": "reactnative",
+      "cwd": "${workspaceFolder}",
+      "platform": "windows"
+    },
+
+    {
+      "name": "Run Windows",
+      "request": "launch",
+      "type": "reactnative",
+      "cwd": "${workspaceFolder}",
+      "enableDebug": false,
+      "platform": "windows"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Iniciar el programa",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}\\index.js"
+    }
+  ]
+}

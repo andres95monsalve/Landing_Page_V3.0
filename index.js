@@ -1,5 +1,3 @@
-// index.js
-
 import * as THREE from "three";
 import { GLTFLoader } from "./src/js/three.js/examples/jsm/loaders/GLTFLoader.js";
 import express from "express";
@@ -90,10 +88,12 @@ function render() {
 render();
 
 // Declaracion de exportacion
-export { default as app } from "./app";
+export { default as app } from "./app/start.js";
 
 // Configuración del módulo app
 
+// Importa la función start
 import { start } from "./app/start.js";
 
+// Exporta la función start
 export { start };
